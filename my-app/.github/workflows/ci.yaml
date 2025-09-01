@@ -1,0 +1,48 @@
+name : hello-world-pipeline
+on :
+  push :
+    branches : ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "checkout the app code"
+        uses: actions/checkout@v4
+
+      - name : "setup python"
+        uses : actions/setup-python@v5
+        with : 
+           python-version: '3.x'
+      
+      - name : "install dependencies"
+        run : |
+          pip install pytest
+
+      - name: "Run the hello app"
+        run: python app.py
+
+  unit_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "checkout the app code"
+        uses: actions/checkout@v4
+
+      - name : "setup python"
+        uses : actions/setup-python@v5
+        with : 
+           python-version: '3.x'
+      
+      - name : "install dependencies"
+        run : |
+          pip install pytest
+
+      - name: "test the app"
+        run: pytest test_app.py
+      
+     
