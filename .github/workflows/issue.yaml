@@ -11,7 +11,7 @@ jobs:
       if: ${{ github.event.workflow_run.conclusion == 'failure' }}
       runs-on: ubuntu-latest
       steps:
-        steps:
+        
         - name: Install GitHub CLI
           run: sudo apt-get install gh -y
 
