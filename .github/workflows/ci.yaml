@@ -29,6 +29,7 @@ jobs:
 
   unit_test:
     runs-on: ubuntu-latest
+    if: ${{always ()}}
     needs: build
     steps:
       - name: "checkout the app code"
